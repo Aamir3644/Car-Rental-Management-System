@@ -2,19 +2,25 @@
 ```
     Those Interface which has exactly one abstract method.
     Functional interfaces are primarily designed to be used with lambda expressions.
-    It can have multiple static and default methods, but it must have precisely one abstract method.This method represents the behaviour that can be implemented using lamda expressions.
-    When you create an instance of a functional interface using a lambda expression, you're effectively providing an implementation for its single abstract method.
+    It can have multiple static and default methods, but it must have precisely one abstract method.This method represents the
+    behaviour that can be implemented using lamda expressions.
+    When you create an instance of a functional interface using a lambda expression, you're effectively providing an
+    implementation for its single abstract method.
 ```
 ```
-    Note : If you have array or list of user defined class and you try to sort that array or list using Arrays.sort() or Collections.sort() without using comparable and comparator then it will give you compilation error cause it will not know on which basis it has to compare these objects. This error does not come up with array or collection that contains primitive data.
+    Note : If you have array or list of user defined class and you try to sort that array or list using Arrays.sort() or 
+           Collections.sort() without using comparable and comparator then it will give you compilation error cause it will not
+           know on which basis it has to compare these objects. This error does not come up with array or collection that
+           contains primitive data.
 ```
 ## Comparable :
 ```
             - compare this object with other object
             - Functional Interface
             - contains only one abstract method named "public int compareTo(T o)" for sorting objects.
-            - When using comparable with user defined classes, that class has to implement Comparable interface with specifying generic type of that class e.g - Comparable<Employee> (if Employee class want to implement Comparable interface) and you have to override compareTo() method also.
-
+            - When using comparable with user defined classes, that class has to implement Comparable interface with specifying
+              generic type of that class e.g - Comparable<Employee> (if Employee class want to implement Comparable interface) 
+              and you have to override compareTo() method also.
 ```
 >> Example : 
 
@@ -67,7 +73,9 @@
 ```            
         Ways to Use Comparator :
 ```
-        1) Making a Comparator Class implementing Comparator<T> and then creating object of that comparator class and passing that object as second parameter to Arrays.sort() or Collections.sort() or any methods that takes comparator as argument.
+        1) Making a Comparator Class implementing Comparator<T> and then creating object of that comparator class and passing
+        that object as second parameter to Arrays.sort() or Collections.sort() or any methods that takes comparator as
+        argument. 
 ```
 ```
         2) By Passing anonymous object of Comparator Class as a parameter
@@ -82,6 +90,7 @@ We can make above code concise with the help of lambda
 ```java
         Arrays.sort(arr,(e1,e2) -> e1.getId - e2.getId); 
         // Java Compiler will able to know that e1 and e2 are of Employee cause, you made arr of Employee[] type.
-        // In Lambda Expressions, the compiler performs type inference based on context in which it is used, It is one of the advantages of Lambda.
+        // In Lambda Expressions, the compiler performs type inference based on context in which it is used, It is one of the
+        // advantages of Lambda.
 ```
 
