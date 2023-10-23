@@ -31,12 +31,15 @@
             next() :  returns the next element in the collection and moves the cursor forwards.
             remove() : it removes the last element from the colection returned by the iterator.
 
->> E.g :         Iterator itr = list.iterator();
-              `` FORWARD TRAVERSAL ``
+>> E.g :         
+```java
+               Iterator itr = list.iterator();
+              // FORWARD TRAVERSAL
               while(itr.hasNext())
               {
                   System.out.print(itr.next() + " ");
               }
+```
 
 ## ListIterator :
 >> It is an subinterface of Iterator. It allows iteration in both forward and reverse direction within a list.
@@ -51,17 +54,20 @@
             add() : adds the specified element in the list
             remove() : removes the last element that was returned by next() or previous().
 
->> E.g :         ListIterator i = list.listIterator();
-               `` FORWARD TRAVERSAL ``
+>> E.g :         
+```java
+               ListIterator i = list.listIterator();
+               // FORWARD TRAVERSAL
                while (i.hasNext()) 
                {
                    System.out.print(i.next() + " ");    
                }
-                `` REVERSE TRAVERSAL ``
+               // REVERSE TRAVERSAL
                 while (i.hasPrevious())
                 {
                     System.out.print(i.previous() + " ");  
                 }
+```
 
 ## Fail-fast  vs  Fail-safe :
 >> If state of collection is changed while iterating over that collection using a iterator then it fails and gives
@@ -159,7 +165,10 @@
                     1) Natural Order : if you don't provide custom comparator while creating PriorityQueue then it is popped according to its natural ordering i.e ascending. The elements with low integer values will have higher priority.
                     
                     2) Custom Comparator : If we give custom comparator when creating PriorityQueue. This comparator decides the priority of elements. e.g :
-`` PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)-> b - a); `` // Descending Order  
+
+```java 
+PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)-> b - a); // Descending Order
+```   
 
 ## ArrayDeque :
 >>              Internally, ArrayDeque is dynamically growable array.
@@ -174,4 +183,68 @@
              Due to the Hashing technique, Hashset is good for searching operation.
 
 ## LinkedHashSet :
->>
+>>           It uses combination of Hashtable and LinkedList.
+             Duplicates are not allowed.
+             Maintains the insertion order, provides predictable iteration order.
+             
+## TreeSet :
+>>           Duplicates are not allowed
+             It keeps the elements in sorted. If we don't give Comparator specifically to define sorting order, elements gets stored in natural order.
+
+## HashMap :
+>>           Internally used Hash Table.
+             It stores elements in Key-Value pairs.
+             Duplicate Keys are not allowed.
+             Only one null key is allowed.
+
+>> map.put(1,"A");   =>    At first, the key is converted into hashcode integer value using hashcode(). 
+                           Then, hashcode is converted into index of array (table) of buckets, generally using % operator.
+                           According to index, it is inserted into appropriate bucket and if hash collision happens i.e if multiple Key-Value pairs exist already in that bucket, then LinkedList or Tree is used handle that according to that implementation.
+
+>> map.get(1);       =>    At first, key is converted into hashcode integer value using hashcode().
+                           Then, hashcode is converted into index of array (table) of buckets, generally using % operator.
+                           Then, HashMap looks into calculated index. If only one Key-Vaue is there, then directly it will compare your given key with stored key with equals() method.
+                           If multiple Key-Value Pairs are in the bucket, the  hashmap iterates and compares every Key with given Key with equals() method.
+                           When a key in bucket matches the given key, then associated value is returned.
+
+>> HashMap Iteration using EntrySet : 
+   The entrySet() method returns a set of key-value pairs (entries) in the HashMap.
+
+```java 
+         HashMap<Integer,String> map = new HashMap<>();
+         map.put(1,"A");
+         map.put(2,"B");
+         map.put(3,"C");
+
+         // Here Map.Entry<Integer,String> represents the each key-value pair
+         for(Map.Entry<Integer,String> entry : map.entrySet())
+         {
+            Integer key = entry.getKey();
+            String value = entry.getValue();
+            System.out.println(key+" "+value);
+         }
+```
+>> Hashmap Iteration using KeySet :
+   The keySet() method returns a set of keys from the Hashmap.
+
+```java
+         HashMap<Integer,String> map = new HashMap<>();
+         map.put(1,"A");
+         map.put(2,"B");
+         map.put(3,"C");
+
+         // Here Integer represents the type of each key, thats why are writing Integer not Set<Integer> in the loop
+         for(Integer key : map.keySet())
+         {
+            String value = map.get(key);
+            System.out.println(key+" "+value);
+         }
+```
+
+## LinkedHashMap :
+>>           It uses combination of hashtable and LinkedList.
+             Insertion order is maintained.
+         
+## HashTable :
+>>          Hashtable is old and synchronized version of HashMap. It has performance issues cause of synchronization.
+            It does not guarantee specific order for key-value pair.
