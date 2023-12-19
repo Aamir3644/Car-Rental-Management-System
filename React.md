@@ -1,3 +1,6 @@
+## What is React ?
+>> A javascript library for building user interfaces
+
 ## What is VDOM ?
 >> The Virtual DOM in React.js is a performance optimization technique. It's a lightweight copy of the real DOM that React uses to efficiently update the user interface. When the application's state changes, React creates a new Virtual DOM and calculates the minimal set of changes needed to update the real DOM, reducing unnecessary updates. This process is known as reconciliation.
 

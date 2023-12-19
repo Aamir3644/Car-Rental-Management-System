@@ -1,8 +1,7 @@
 -> Collection is  nothing but a group of individual objects as a single entity.
 
 ## COLLECTION FRAMEWORK : (1.2)
->> It is an API which contains predefined classes and Interfaces, which can be used to represent group of individual objects as a single
-   entity.
+>> It is an API which contains predefined classes and Interfaces, which can be used to represent group of individual objects as a single entity.
 ## COLLECTION (interface) :
 >> It is the root interface (present in java.util package) of all the collection objects.
 ## COLLECTIONS (utility class) :
@@ -19,7 +18,7 @@
 
 ## Why Map Interface does not extend Collection Interface ? 
 >> So the one line answer to this will be " Because they are incompatible "
-   The Collections interface has a method called add(Object o). The Map Interface can not have such method cause it stores values in Key-Value pair.
+   The Collection interface has a method called add(Object o). The Map Interface can not have such method cause it stores values in Key-Value pair.
 
 ## Iterable :
 >> It is an interface which has method called iterator(), which returns a Iterator over the elements of type T.

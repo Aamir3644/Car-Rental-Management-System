@@ -77,14 +77,55 @@
         that object as second parameter to Arrays.sort() or Collections.sort() or any methods that takes comparator as
         argument. 
 ```
+```java
+
+                class IdComparator implements Comparator<Employee>
+                {
+                @Override
+                public int compare(Employee emp1,Employee emp2){
+                        return emp1.getId()-emp2.getId() ;
+                }      
+                }
+
+                public class Main
+                {
+                        public static void main(String[] args) {
+                        
+                                Employee[] arr = {e1,e2,e3,e4};
+                                
+                                IdComparator comp = new IdComparator();
+                                
+                                Arrays.sort(arr,comp);
+                                
+                                System.out.println(Arrays.toString(arr));
+                        
+                        }
+                }
+
+```
 ```
         2) By Passing anonymous object of Comparator Class as a parameter
+```
+```java
+		 Arrays.sort(arr,new IdComparator()); //Anonymous Object
 ```
 ```
         3) By assigning Lambda to Comparator reference and then passing comparator object as a parameter
 ```
+```java
+        Comparator<Employee> comp = (emp1, emp2)-> emp1.getName().compareTo(emp2.getName());
+        Arrays.sort(arr,comp);
+```
 ```
         4) By using anonymous object of anonymous class
+```
+```java
+                Arrays.sort(arr,new Comparator<Employee>(){
+		     public int compare(Employee emp1,Employee emp2)
+		     {
+		         return emp1.getId() - emp2.getId();
+		     }
+		 });
 ```
 We can make above code concise with the help of lambda
 ```java

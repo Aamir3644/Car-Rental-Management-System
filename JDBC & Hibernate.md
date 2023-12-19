@@ -51,12 +51,15 @@ response.
 >> A Servlet is a Java-based server-side component used in web application development. Servlets extend the functionality of web servers by handling incoming HTTP requests and generating dynamic responses.They are commonly used to create dynamic web pages by generating HTML, JSON, XML, etc. 
 
 ## What is a Web Container or Servlet Container ?
->> is nothing but server side JVM. It is a server side component of a web server that manages the execution of web components. it provides runtime environment for dynamic web components like sevlet ,jsp etc.The primary function of a Web Container is to receive and process HTTP requests, manage the lifecycle of Servlets, and generate responses to be sent back to clients (typically web browsers).
+>> is nothing but server side JVM. It is a server side component of a web server that manages the execution of web components. it provides runtime environment for dynamic web components like sevlet ,jsp etc.The primary function of a Web Container is to receive and process HTTP requests, manage the lifecycle of Servlets, and generate responses to be sent back to clients.
 
 --------------------------------------------------------------------------------------------------------------------------------
 
+## What is JSON ?
+>> it stands for JavaScript Object Notation. JSON is a standard format or data interchange format that uses human-readable text and it is in key-value pairs. It is used for transmitting data between client and server.
+
 ## What is Maven ? 
->> Maven is a widely-used build automation and project management tool for Java (and other) projects. It automates tasks like compiling, testing, and packaging, simplifies dependency management, and enforces project structure conventions. Developers declare project details in a pom.xml file, and Maven handles the rest, including fetching dependencies from a central repository.
+>> Maven is a widely-used build automation and project management tool for Java (and other) projects. It automates tasks like compiling, testing, and packaging, simplifies dependency management. Developers declare project details in a pom.xml file, and Maven handles the rest, including fetching dependencies from a central repository.
 
 ## What is JPA ?
 >> The Java Persistence API (JPA) is a specification of Java. It is used to persist data between Java object and relational database.
@@ -64,7 +67,7 @@ As JPA is just a specification, it doesn't perform any operation by itself. It r
 The *javax.persistence* package contains the JPA classes and interfaces.
 
 ## What is Hibernate
->> Hibernate is a powerful ORM framework that simplifies database interaction in Java applications, offering features like database independence, automatic table generation, and query generation. It abstracts the complexities of working with relational databases, allowing developers to focus on their application logic while Hibernate takes care of the underlying data access tasks.
+>> Firstly, Hibernate is a Imlementation of JPA specification. Hibernate is a ORM framework that simplifies database interaction in Java applications, offering features like database independence, automatic table generation, and query generation. It simplifies working with the relational databases, allowing developers to focus on their application logic while Hibernate takes care of the underlying data access tasks.
 >> ORM stands for Object-Relational Mapping. It is a programming technique and a framework that allows developers to interact with relational databases in an object-oriented manner. ORM frameworks provide a way to map Java or other programming language objects to database tables. Each object class corresponds to a table, and object attributes map to table columns. Developers can work with objects and classes rather than writing raw SQL queries. The ORM framework generates the necessary SQL statements to interact with the database, such as SELECT, INSERT, UPDATE, and DELETE queries.
 
 ## What can you tell about Hibernate Configuration File ?
@@ -77,10 +80,21 @@ The file contains database related configurations and session-related configurat
 >> Transaction Management: JDBC doesn't support implicit transaction management. It is upon the developer to write transaction management code using commit and rollback methods. Whereas, Hibernate implicity provides this feature.
 >> Hibernate supports OOPs features like inheritance, associations and also supports collections. These are not available in JDBC.
 
+## Connection Pooling :
+>> Connection Pool is a pool of already created connection objects which are ready to use. If we want to communicate with database then we request the Connection Pool to provide Connection. By using that connection we can communicate with the database. After the work, connection will be returned to pool rather than destroying. Hence we can use same connection object multiple times, so that overall performance will be improved.
+
+
 ## What is Session in Hibernate ?
 >> A session is an object that maintains the connection between Java object application and database. Session also has methods for storing, retrieving, modifying or deleting data from database using methods like persist(), load(), get(), update(), delete(), etc.
->> A Hibernate session is responsible for managing the lifecycle of persistent objects. It tracks changes made to Java objects and synchronizes them with the database when necessary. This helps ensure data consistency.
+>> A Hibernate session is responsible for managing the lifecycle of persistent objects. It tracks changes made to Java objects and synchronizes them with the database when necessary.
+>> Session Object is associated with L1 cache.
 >> Session is not a thread-safe object which means that any number of threads can access data from it simultaneously.
+
+## What is Session Factory :
+>> It is a Factory(provider) of session objects.
+>> we use SessionFactory object to create session object.
+>> It is immutable that means Once SessionFactory is created, any changes made to hibernate.cfg.xml will not be auto reflected in SessionFactory.
+>> It is associated with L2 cache.
 
 ## Hibernate Cache Types :
 >> First-Level Cache (Session Cache):
