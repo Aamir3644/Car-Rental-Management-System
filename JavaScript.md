@@ -212,4 +212,32 @@ In general terms, the scope will let us know at a given part of code, what are v
 -  So basically , They provide a way to work with Promises in a more synchronous-like fashion, eliminating the need for explicit chaining of 
 .then() methods.
 
-## 
+```js
+            async function exampleAsyncFunction() {
+            console.log("Start");
+
+            // Simulate an asynchronous operation using a Promise
+            await new Promise((resolve) => {
+               setTimeout(() => {
+                     console.log("Async operation complete");
+                     resolve();
+               }, 2000); // Simulating a 2-second delay
+            });
+
+               console.log("End");
+            }
+
+            console.log("Before async function call");
+            exampleAsyncFunction();
+            console.log("After async function call");
+
+```
+```
+      // Output :
+      Before async function call
+      Start
+      After async function call
+      Async operation complete
+      End
+```
+>> it's important to understand that the program as a whole isn't executing synchronously. Other non-blocking operations can still occur while waiting for the asynchronous operation. The code after the await expression is not blocked; it's only the code within the async function that appears to execute in a more synchronous fashion.
