@@ -1,47 +1,41 @@
 ## What is OOPS ?
->> Object-Oriented Programming (OOP) is a fundamental approach in software development that centers around the idea of "objects". 
-It provides a structured and organized approach to designing and building software systems. OOP is based on several key principles and features:
+>> Object-Oriented Programming (OOP) is a fundamental approach in software development that centers around the idea of "objects". It provides a structured and organized approach to designing and building software systems. OOP is based on several key principles and features:
 
 1) Classes and Objects :
 >  A class is a user-defined blueprint from which objects are created. It represents the set of properties or methods that are common to all objects of one type. Using classes, you can create multiple objects with the same behavior instead of writing their code multiple times. An object is an instance of a class and represents a real-world entity.
 
 2) Abstraction :
->  Data Abstraction is the property by which only the essential details are displayed to the user. The non-essential units are not displayed to the user. Ex: A car is viewed as a car rather than its individual components.
-Consider a real-life example of a man driving a car. The man only knows that pressing the accelerators will increase the car speed or applying brakes will stop the car, but he does not know how on pressing the accelerator, the speed is actually increasing. He does not know about the inner mechanism of the car or the implementation of the accelerators, brakes etc. in the car. This is what abstraction is.
+>  Data Abstraction is the property by which only the essential details are displayed to the user. The non-essential units are not displayed to the user. Ex: A car is viewed as a car rather than its individual components. Consider a real-life example of a man driving a car. The man only knows that pressing the accelerators will increase the car speed or applying brakes will stop the car, but he does not know how on pressing the accelerator, the speed is actually increasing. He does not know about the inner mechanism of the car or the implementation of the accelerators, brakes etc. in the car. This is what abstraction is.
 
 3) Encapsulation :
-> Encapsulation is one of the four fundamental principles of object-oriented programming (OOP), and it refers to the concept of bundling data (attributes) and methods (functions) that operate on that data into a single unit called a class. Additionally, it restricts direct access to some of an object's components and prevents the accidental modification of data.
-  Encapsulation allows you to hide the internal state (data or attributes) of an object from the outside world.
-  In Java, encapsulation is implemented using access modifiers.
-  To provide controlled access to the internal state of an object, getter and setter methods are commonly used.
+> Encapsulation is one of the four fundamental principles of object-oriented programming (OOP), and it refers to the concept of bundling data (attributes) and methods (functions) that operate on that data into a single unit called a class. Additionally, it restricts direct access to some of an object's components and prevents the accidental modification of data.Encapsulation allows you to hide the internal state (data or attributes) of an object from the outside world.                In Java, encapsulation is implemented using access modifiers. To provide controlled access to the internal state of an object, getter and setter methods are commonly used.
 
 4) Inheritance :
->  Inheritance is a mechanism in which one class acquires the property of another class.
-   Inheritance is a fundamental object-oriented programming concept where a new class (the subclass) can inherit properties and behaviors (fields and methods) from an existing class (the superclass). It enables code reuse, promotes the "IS-A" relationship, and allows you to create a hierarchy of classes. Subclasses can extend or override inherited members, making it a powerful mechanism for organizing and structuring code.
+>  Inheritance is a mechanism in which one class acquires the property of another class. Inheritance is a fundamental object-oriented programming concept where a new class (the subclass) can inherit properties and behaviors (fields and methods) from an existing class (the superclass). It enables code reuse, promotes the "IS-A" relationship, and allows you to create a hierarchy of classes. Subclasses can extend or override inherited members, making it a powerful mechanism for organizing and structuring code.
 
 5) Polymorphism :
 >  It refers to the ability of object-oriented programming languages to differentiate between entities with the same name efficiently. The ability to appear in many forms is called polymorphism.
 
 > Compile-Time Polymorphism (Static Binding):
+```
   - Also known as method overloading.
   - Occurs during compile time.
   - Multiple methods in the same class have the same name but different parameter lists (number or types of parameters).
   - The correct method to call is determined at compile time based on the method signature.
-
+```
 > Run-Time Polymorphism (Dynamic Binding):
-
+```
   - Also known as method overriding.
   - Occurs during runtime.
   - It allows a subclass to provide a specific implementation of a method that is already defined in its superclass.
   - The decision about which method to call is made at runtime based on the actual object type.
-
+```
 ## Flow of Java Program :
->>
+```
   A compiler is a program that translates the human-readable Java source code into a lower-level code called bytecode.       Bytecode is a platform-independent representation of the program. When you write Java code, you save it in a .java file. To run this code, you first need to compile it using a Java compiler (e.g., javac). The compiler checks the code for syntax errors and translates it into bytecode. The output of the compiler is a .class file containing the bytecode representation of your Java program. This .class file can be executed on any system with a compatible Java Virtual Machine (JVM), making Java platform-independent.
- 
->> 
   The Java Virtual Machine (JVM) is responsible for interpreting and executing the bytecode generated by the compiler. It acts as an interpreter for the bytecode. When you run a Java program, you use the java command followed by the name of the class containing the main method. The JVM loads the bytecode from the .class file and executes it line by line.
   During execution, the JVM performs Just-In-Time (JIT) compilation, which means it may further compile some bytecode into native machine code to optimize performance. 
+``` 
 
 ## What is System.out.println() ?
 >> System: It is a final class defined in the java.lang package.
@@ -56,10 +50,15 @@ Consider a real-life example of a man driving a car. The man only knows that pre
 ## What is 'this' keyword ?
 >> The this keyword in Java is a reference to the current instance of a class. It is used primarily within class methods and constructors to refer to the object on which the method is invoked or the object being constructed. This is particularly useful when there is a naming conflict between instance variables and method parameters or local variables.
 
+## Constructor :
+> constructor is a special type of method which initializes an object. The name of constructor is same as class name.
+> constructor does not have a return type. it is called automatically when object is created.
+> If there is no constructor present in class then Java compiler provides a default constructor. The default constructor has no parameters and doesn't perform any initialization. When default constructor is called, field members are initialized with default values.
+
 ## What is Constructor Chaining ?
 >> constructor chaining is a sequence of invoking constructors upon initializing an object. It is used when we want to invoke a number of constructors, one after another by using only an instance.
 > We can achieve constructor chaining in two ways:
-- Within the same class: If the constructors belong to the same class, we use this
+- Within the same class: If the constructors belong to the same class, we use "this"
 - From the base class: If the constructor belongs to different classes (parent and child classes), we use the super keyword to call the constructor from the base class.
 
 ## What is JDK , JRE , JVM ?
@@ -119,23 +118,3 @@ Consider a real-life example of a man driving a car. The man only knows that pre
 >> Reflection in Java refers to the ability of a program to examine, introspect, and manipulate its own structure, classes, methods, fields, and objects at runtime. It provides a way to inspect and modify Java classes and objects dynamically, without knowing their names or details at compile time. Reflection is facilitated through the use of classes in the java.lang.reflect package.
 The java.lang.Class class provides many methods that can be used to get metadata, examine and change the run time behavior of a class.
 
-
-try(BufferedReader reader = new BufferedReader(new FileReader(sample.text))){
-        String line;
-        while(line = reader.readLine() != null)
-        {
-            System.out.println(line); 
-        }
-}catch(IOException e)
-{
-    e.printStackTrace();
-}
-
-
-try(BufferedWriter writer = new BufferedWriter(new FileWriter(output.txt))){
-    writer.write("HELLO WORLD");
-    writer.newLine();
-    writer.write("Hi");
-}catch(IOException e){
-    e.printStackTrace();
-}

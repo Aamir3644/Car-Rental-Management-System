@@ -193,7 +193,7 @@ In general terms, the scope will let us know at a given part of code, what are v
 
 ## What is Promise ?
 >> A Promise is an object representing the eventual completion or failure of an asynchronous operation.
-   It allows you to work with asynchronous code in a more structured and predictable manner, making it easier to handle complex asynchronous flows.
+>> It allows you to work with asynchronous code in a more structured and predictable manner, making it easier to handle complex asynchronous flows.
 
 -  There are 3 States of Promise Object : 
    1) Pending
@@ -209,8 +209,7 @@ In general terms, the scope will let us know at a given part of code, what are v
 >> The async keyword is used to define a function as asynchronous. An async function always returns a Promise implicitly, even if you don't explicitly create one.
 -  async functions are used to simplify working with asynchronous code by providing a more linear and readable flow.
 -  Inside an async function, you can use the await keyword to pause the execution of the function until a Promise is resolved.It allows you to wait for the result of an asynchronous operation.
--  So basically , They provide a way to work with Promises in a more synchronous-like fashion, eliminating the need for explicit chaining of 
-.then() methods.
+-  So basically , They provide a way to work with Promises in a more synchronous-like fashion, eliminating the need for explicit chaining of .then() methods.
 
 ```js
             async function exampleAsyncFunction() {
