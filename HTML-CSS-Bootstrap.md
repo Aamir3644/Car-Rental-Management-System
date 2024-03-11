@@ -37,11 +37,8 @@
 
 ## Where do we place ``<script>`` tag or JS link in HTML ?
 >> There are 2 ways it can be placed in HTML
->> 1) Inside <head> tag : As we know the head will load before body, so script will get fetched and executed before the html
-      elements gets rendered. This can delay the rendering of HTML elements
->> 2) At the end of the <body> tag : We can place the script tag inside body tag just before closing it. if you are
-      manipulating html elements in you JS code then before script gets loaded, html elements will be redered.
-
+>> 1) Inside <head> tag : As we know the head will load before body, so script will get fetched and executed before the html elements gets rendered. This can delay the rendering of HTML elements
+>> 2) At the end of the <body> tag : We can place the script tag inside body tag just before closing it. if you are manipulating html elements in you JS code then before script gets loaded, html elements will be redered.
 >> The placing will depedent on indivisual's requirement
 
 ## What is title tag in HTML ?

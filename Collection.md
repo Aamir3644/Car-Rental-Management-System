@@ -247,3 +247,6 @@ PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)-> b - a); // Descending Or
 ## HashTable :
 >>          Hashtable is old and synchronized version of HashMap. It has performance issues cause of synchronization.
             It does not guarantee specific order for key-value pair.
+
+
+

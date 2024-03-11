@@ -4,9 +4,6 @@
 ## What is Database ?
 >> A Database is defined as a structured form of data storage in a computer or a collection of data in an organized manner.
 
-select empno, ename from employee
-order by empno;
-
 ## What does "WHERE" condition do ?
 >> Where condition used for searching. Where condition is used to restrict the rows. Searching takes place in Server Hard Disk and then rows are brought into RAM.
 

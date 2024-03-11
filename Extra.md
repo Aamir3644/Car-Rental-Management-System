@@ -1,3 +1,6 @@
+## Difference between Library and Framework :
+>> Libraries provide developers with predefined functions and classes to make their work easier and boost the development process. Framework, on the other hand, is like the foundation upon which developers build applications for specific platforms.
+
 ## What is the difference between Authentication and Authorization ?
 >> Authentication : 
 - Authentication is the process of verifying the identity of a user or a device . It answers the question, "Who are you?"
@@ -27,7 +30,7 @@
 >>  "JWT stands for JSON Web Token. It is a compact and self-contained way to represent information between two parties in a secure manner. JWTs are commonly used for authentication and authorization in web applications. They consist of three parts: a header, a payload, and a signature. The header typically specifies the type of token and the signing algorithm used, while the payload contains claims or data. JWTs are digitally signed, ensuring their integrity, and can be used to verify the identity of the sender. They are often used for single sign-on (SSO) and secure data exchange between services in a distributed system."
 
 >> JWT are stateless, it means that JWT does not rely on the server to maintain any session state for authentication and authorization purposes. In other words, every piece of information needed to verify and process a JWT is contained within the token itself.
-Stateless authentication with JWTs is highly scalable because any server in a cluster can independently verify the token's authenticity without needing to communicate with other servers or a central session store.
+>> Stateless authentication with JWTs is highly scalable because any server in a cluster can independently verify the token's authenticity without needing to communicate with other servers or a central session store.
 
 ## Statically Typed and Dynamically Typed :
 >> Statically Typed Languages:
