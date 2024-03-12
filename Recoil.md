@@ -71,3 +71,21 @@
         },
         });
 ```
+
+# Async data queries :
+
+
+# Atom Family :
+>> Returns a function that returns a Recoil atom.
+>> When you pass an id to atom family, it will return you an atom of that specific id.
+```js
+        import { atomFamily } from 'recoil';
+        import { TODOS } from './todos.js';
+
+        export const todosFamily = atomFamily({
+            key : todosFamily,
+            default : id => {
+                return TODOS.find(x => x.id == id)
+            }
+        })
+```
