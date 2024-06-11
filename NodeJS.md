@@ -161,8 +161,56 @@ console.log(decodedToken);
       }
 ```
 
-## Structure of a Backend Express Web Server:
+# Structure of a Backend Express Web Server:
 - (1) index.js
 - (2) db
 - (3) middlewares
 - (4) routes
+
+# Mongoose Library :
+- It is a popular Node.js library for MongoDB object modeling.
+## Steps while using Mongoose Library :
+
+ ```js
+		// Getting the Mongoose library instance
+		const mongoose = require('mongoose');
+		
+		// Connecting to your DB
+		mongoose.connect("Your_MongoDB_Instance_URL");
+		
+		// Defining the schema for Users
+		const userSchema = new mongoose.Schema({
+			username : String,
+			firstName : String,
+			age : Number
+		});
+	
+     // Create a model from the schema
+     const User = mongoose.model('Users', userSchema);
+
+		module.exports = {
+			User
+		};
+```
+
+```js 
+const User = mongoose.model('Users', userSchema); 
+  ```
+- In above line, we are creating a model for a collection, 'Users' is the name of that collection for which you are creating this model, it will use lowercase version of this name (i.e 'users') when interacting with the database.
+- If that collection does not exist in that database, mongoose will create one for you and operate on it.
+
+```js
+      const User = require('./db');
+
+      // Creating a new User
+      const newUser = new User({
+        username: 'aamir_khan',
+        email: 'aamir@gmail.com',
+        age: 24,
+      });
+
+      newUser.save(); // Creating a User
+      User.find({username : aamir_khan}); //Finding a User
+      User.updateOne({username : aamir_khan},{age : 26}); // Updating a User
+      User.deleteOne({username : aamir_khan}); // Deleting a User
+```

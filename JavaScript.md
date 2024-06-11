@@ -59,7 +59,7 @@ age = 30;
 ```
    Spread Operator is used to spread or expand elements from an iterable like an array into indivisual elements.
    Spread Operator is Used for :
-   1) Copying an Array
+   (1) Copying an Array
 ```
 
 ```js
@@ -68,7 +68,7 @@ age = 30;
 ```
 
 ```
-   2) Merging Arrays
+   (2) Merging Arrays
 ```
 
 ```js
@@ -79,7 +79,7 @@ console.log(mergedArray); // [1,2,3,4,5,6]
 ```
 
 ```
-   3) Passing Multiple Arguments to a function
+   (3) Passing Multiple Arguments to a function
 ```
 
 ```js
@@ -172,6 +172,9 @@ console.log(x); // undefined
 var x = 5;
 ```
 
+## What is Temporal Dead Zone (TDZ) ?
+>> Hoisting moves variable declarations (those declared with var) to the top of their containing scope during the compilation phase. When using var, variables are initialized with undefined, so they can be accessed before their actual declaration in the code. However, when using let or const, variables are hoisted to the top of their block scope but remain uninitialized in a state known as the Temporal Dead Zone (TDZ). Attempting to access them before their declaration in the code results in a ReferenceError.
+
 ## What is the difference between null and undefined?
 
 > > null is an explicitly assigned value that represents the absence of any object value, while undefined indicates that a variable has been declared but hasn't been assigned a value.
@@ -250,6 +253,10 @@ Imagine you're at a party where there's a dance floor and a DJ. People who want 
 
 ```
 The event loop constantly checks if the call stack is empty. If it's empty, it takes the first function from the callback queue and pushes it onto the call stack for execution. This process continues, ensuring that asynchronous functions are executed when their turn comes, without blocking the main execution thread.
+```
+
+```
+When a function with asynchronous operations is called, it executes synchronously, while the asynchronous operations are offloaded to the browser APIs. Once an asynchronous operation completes, its callback is placed in the callback queue. The event loop continuously checks if the call stack is empty. If it is, it takes the first callback from the queue and pushes it onto the call stack for execution. This process ensures non-blocking handling of asynchronous tasks in JavaScript.
 ```
 
 ## What is Callback in JS ?

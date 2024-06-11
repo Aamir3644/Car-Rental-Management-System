@@ -12,8 +12,7 @@
 >> DOCTYPE tells the browser which version of HTML it is and how to interpret the code
 
 ## What will happen if you remove DOCTYPE from HTML ?
->> Then the browser can still render the page, but they will not be able to validate the version of HTML, so it may lead to
-   some compatibility issues.
+>> Then the browser can still render the page, but they will not be able to validate the version of HTML, so it may lead to some compatibility issues.
 
 ## Difference between head and body tag in html ? 
 ```html
@@ -47,8 +46,7 @@
 >> SEO : search engines use the title as the main heading for search results.
 
 ## What is difference between HTML element and HTML tag ?
->> An HTML element is a complete, individual unit within an HTML document. It consists of a start tag, content, and an end
-   tag.
+>> An HTML element is a complete, individual unit within an HTML document. It consists of a start tag, content, and an end tag.
 >> An HTML tag is a specific part of the element and is used to define the start or end of the element.
 >> HTML empty element or void element : <img src="example.jpg" alt="An example image">
 
