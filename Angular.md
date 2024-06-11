@@ -230,3 +230,80 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 ### ngClass
 >> The ngClass directive adds and removes a set of CSS classes.
 
+**We can not use Two Structural Directives on a single html element**
+
+## Custom Property Binding :
+>> Custom property binding allows communication between parent component and child component.
+>> We can send data from Parent Component to Child Component and vice versa.
+>> @Input is used to send data from parent component to child component.
+>> @Output is used to send data form child component to parent component.
+
+- Sending Data from Parent Component to Child Component
+```js
+        //child.component.ts
+        export class ChildComponent {
+           @Input() title : string;
+           @Input() description : string;
+        }
+```
+```html
+        <!-- child.component.html -->
+        <h1>Title : {{title}}</h1>
+        <h2>Description : {{description}}</h2>
+```
+```js
+        //parent.component.ts
+        export class ParentComponent {
+           parentTitle = "Weoto Technologies";
+           parentDescription = "Canada Corner, Nashik";
+        }
+```
+```html
+        <!-- parent.component.html -->
+        <app-child [title]="parentTitle" [description]="parentDescription"></app-child>
+```
+
+- Sending Data from Child Component to Parent Component
+
+> The child component defines an EventEmitter using the @Output() decorator.
+
+```js
+        //child.component.ts
+        export class ChildComponent {
+           @Output() customEvent : EventEmitter<string> = new EventEmitter<string>();
+
+           sendDataToParent() {
+              this.customEvent.emit('Data from Child');
+           }
+        }
+```
+
+> When the method sendDataToParent() is called, it emits an event with the data 'Data from Child'.
+
+```html
+        <!-- child.component.html -->
+        <button (click)="sendDataToParent()">Send Data to Parent</button>
+```
+
+> In the parent component's template, you bind to the `customEvent` using the event binding syntax. The handler method handleCustomEvent in the parent component will be called when the event is emitted.
+
+```js
+        //parent.component.ts
+        export class TestComponent {
+           show = '';
+
+           handleCustomEvent(data: string) {
+              console.log(data); // Output: 'Data from Child'
+              this.show = data;
+           }
+        }
+```
+
+> The parent component defines the method handleCustomEvent which receives the emitted data as its parameter.
+
+```html
+        <!-- parent.component.html -->
+        <app-child (customEvent)="handleCustomEvent($event)"></app-child>
+        <h1>{{show}}</h1>
+```
+
