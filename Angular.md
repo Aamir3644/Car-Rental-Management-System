@@ -5,9 +5,9 @@
 
 >> To create a new angular project
 * ng new web-app 
-(Above Command will create a project without module.ts file)
+ (This Command will create a project without module.ts file)
 * ng new web-app --no-standalone
-(Above Command will create a project with module.ts file)
+ (This Command will create a project with module.ts file)
 
 >> To run the project
 * ng serve
@@ -530,8 +530,8 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 - They help in protecting routes from unauthorized access, ensuring that only authorized users can navigate to certain parts of an application.
 
 - **There are Five types of Route Guards**
-(1) CanActivate: Checks if a route can be activated.
-(2) CanActivateChild: Checks if child routes can be activated.
-(3) CanDeactivate: Checks if a route can be deactivated.
-(4) Resolve: Pre-fetches data before activating a route.
-(5) CanLoad: Checks if a module can be loaded.
+> (1) CanActivate: Checks if a route can be activated.
+> (2) CanActivateChild: Checks if child routes can be activated.
+> (3) CanDeactivate: Checks if a route can be deactivated.
+> (4) Resolve: Pre-fetches data before activating a route.
+> (5) CanLoad: Checks if a module can be loaded.
