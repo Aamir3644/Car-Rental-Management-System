@@ -529,9 +529,9 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 - Route guards are used to control access to certain routes based on certain conditions.
 - They help in protecting routes from unauthorized access, ensuring that only authorized users can navigate to certain parts of an application.
 
-- **There are Five types of Route Guards**
-> (1) CanActivate: Checks if a route can be activated.
-> (2) CanActivateChild: Checks if child routes can be activated.
-> (3) CanDeactivate: Checks if a route can be deactivated.
-> (4) Resolve: Pre-fetches data before activating a route.
-> (5) CanLoad: Checks if a module can be loaded.
+**There are Five types of Route Guards**
+- (1) CanActivate: Checks if a route can be activated.
+- (2) CanActivateChild: Checks if child routes can be activated.
+- (3) CanDeactivate: Checks if a route can be deactivated.
+- (4) Resolve: Pre-fetches data before activating a route.
+- (5) CanLoad: Checks if a module can be loaded.
