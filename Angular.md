@@ -4,7 +4,10 @@
 * npm install -global @angular/cli@latest
 
 >> To create a new angular project
-* ng new sample-web-app
+* ng new web-app 
+(Above Command will create a project without module.ts file)
+* ng new web-app --no-standalone
+(Above Command will create a project with module.ts file)
 
 >> To run the project
 * ng serve
