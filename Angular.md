@@ -481,4 +481,54 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 ```
 - Inheritance: Child components inherit services from parent components unless overridden.
 
+- **Note**
+> When a service is provided at the component level, each component gets its own instance of that service. Consequently, if data in a component-level service instance is updated, this change will not be reflected in other components that have their own instances of the same service.
 
+## Observables
+- We use observables to perform asynchronous operations and handle asynchronous data.
+- Observables can be created using many ways as follows :
+```ts
+        myobservable = new Observable((observer)=>{
+           observer.next('hello');
+           observer.complete();
+        })
+```
+```ts
+        myobservable = of(5,10,5);
+```
+```ts
+        myobservable = from([5,90,8]);
+        //from() function takes array as an input emit element present in an array one by one.
+```
+- We can subscribe to an observable to receive data.
+- After complete(), we do not receive data.
+```ts
+        this.myobservable.subscribe({
+           next : value => console.log(value),
+           error : err => console.log(err),
+           complete : () => console.log("observable completed...")
+        }) 
+```
+
+### Operators
+- There are different operators like map(), filter() that we can use to operate on the data that we are receiving from an observable.
+
+```ts
+        transformedObs = this.myobservable.pipe(map((val)=>{
+                return val*2;
+        }));
+```
+
+## Routing
+- Routing is a feature that enable us to navigate between different views of our application.
+
+## Route Guards
+- Route guards are used to control access to certain routes based on certain conditions.
+- They help in protecting routes from unauthorized access, ensuring that only authorized users can navigate to certain parts of an application.
+
+- **There are Five types of Route Guards**
+(1) CanActivate: Checks if a route can be activated.
+(2) CanActivateChild: Checks if child routes can be activated.
+(3) CanDeactivate: Checks if a route can be deactivated.
+(4) Resolve: Pre-fetches data before activating a route.
+(5) CanLoad: Checks if a module can be loaded.
