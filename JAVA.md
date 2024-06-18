@@ -72,6 +72,48 @@
 >> JVM : (Java Virtual Machine)
        JVM is an integral part of the JRE responsible for executing Java bytecode. It takes compiled Java bytecode and translates it into native machine code, allowing Java applications to run on various platforms without modification.
 
+## String :
+>> String are immutable in java. Once they are created they can not be changed. If we try to change a String object (eg: str.concat("aamir")), a new String object will be created.
+
+
+## StringBuffer :
+>> StringBuffer are mutable. means we can perform changes in StringBuffer object once they are created and new object won't be created.
+
+
+" == " operator always compares references. if only both references pointing towards same object then only it will return true.
+" equals() " method : As we know every class is inherited from Object class in java. In Object class, the equals() method is already defined and it is defined for reference comparison. The equals() method is overridden in String class for content comparison and in StringBuffer it stil compares references.
+
+## Why Strings are immutable in Java ?
+>> so goal of any programming language is to make effecient use of memory. Its very common for String literals to occupy a lot of space, which can even cause redundancy. So in order to make Java more efficient JVM sets aside a special area in memory called "String Constant Pool". When we create a String Literal, it first checks that this literal is in string pool, if it is present in string pool. The reference will start pointing towards it, and if it is not present it will create a new literal. In the String Pool, more than one references can point towards a Single String Object and it would be bad if one reference changes string value. so thats why strings are immutable.
+>> Also, in any application Strings are used for confidential data like password so it would pose a great security threat if Strings are not immutable. Hence Strings are immutable, so its value cannot be changed.
+
+## Thread 
+>> Threads are light weight processes within a process.
+
+## Thread Life Cycle :  
+``` 
+(1) New: This is the initial state when a thread is created but not yet started.
+     You create a new thread by instantiating a Thread object, but it doesn't start running until you call its start() method.
+(2) Runnable: A thread enters the runnable state when the start() method is called.
+          In this state, the thread is ready to run, but the operating system has not yet selected it to be the running thread.
+(3) Blocked: A thread moves to the blocked state when it wants to access an object that another thread has locked.
+         The thread will remain in this state until the lock is released by the other thread.
+(4)Waiting: A thread enters the waiting state when it waits for another thread to perform a particular action.
+         For example, a thread can enter the waiting state by calling the wait() method, waiting for another thread to notify it.
+(5)Timed Waiting: A thread enters the timed waiting state when it calls a method with a specified waiting time.
+               For instance, calling sleep() or join() with a timeout puts the thread in this state.
+(6)Terminated: A thread enters the terminated state when its run() method completes, or when the stop() method is called.
+               Once a thread is terminated, it cannot be started again.
+
+```
+## Multithreading :
+```
+- Multithreading in Java enables the concurrent execution of multiple threads, improving performance and responsiveness. Threads can run independently, doing different tasks simultaneously.
+- In Java, multithreading can be achieved by extending the Thread class or implementing the Runnable interface.
+- When we extend a Thread class, we have to override run() method and when we implement Runnable Interface, we have to implement run() method.
+
+```
+
 ## What is Wrapper Class ?
 >> A wrapper class in Java is a class that wraps, or encapsulates, the primitive data types (such as int, char, float, etc.) into objects. Each primitive data type has a corresponding wrapper class in Java. The primary purpose of wrapper classes is to provide a way to treat primitive data types as objects.  It allows you to work with primitives as if they were objects, enabling features like using them in collections,generics and handling null values.
 
@@ -113,6 +155,186 @@
 3) Method Area -> Class metadata, static field data and method data is stored in method area.
 4) Native Method -> As we know, some part of the Java is written in C or C++. Native method stack is used support native methods means methods written in other languages other than Java. It maintains information of native method calls.
 5) Program Counter Registers -> It stores the address of instruction being executed. 
+
+## Functional Interface :  
+```
+    Those Interface which has exactly one abstract method.
+    Functional interfaces are primarily designed to be used with lambda expressions.
+    It can have multiple static and default methods, but it must have precisely one abstract method.This method represents the
+    behaviour that can be implemented using lamda expressions.
+    When you create an instance of a functional interface using a lambda expression, you're effectively providing an
+    implementation for its single abstract method.
+```
+```
+    Note : If you have array or list of user defined class and you try to sort that array or list using Arrays.sort() or 
+           Collections.sort() without using comparable and comparator then it will give you compilation error cause it will not
+           know on which basis it has to compare these objects. This error does not come up with array or collection that
+           contains primitive data.
+```
+## Comparable :
+```
+            - compare this object with other object
+            - Functional Interface
+            - contains only one abstract method named "public int compareTo(T o)" for sorting objects.
+            - When using comparable with user defined classes, that class has to implement Comparable interface with specifying
+              generic type of that class e.g - Comparable<Employee> (if Employee class want to implement Comparable interface) 
+              and you have to override compareTo() method also.
+```
+>> Example : 
+
+```java
+        import java.util.*;
+
+        class Employee implements Comparable<Employee>{
+            private int id;
+            private String name;
+    
+            public Employee(int id,String name){
+                this.id = id;
+                this.name = name;
+            }
+            
+            // Getters and Setters Here...
+            
+            @Override
+            public String toString(){
+                return "Employee id - "+id+" name - "+name;
+            }
+            
+            public int compareTo(Employee other){
+                return other.id -  this.id;
+            }
+        }
+
+        public class Main
+        {
+	        public static void main(String[] args) {
+            Employee e1 = new Employee(4,"Aamir");
+            Employee e2 = new Employee(2,"Harsh");
+            Employee e3 = new Employee(1,"Prajyot");
+            Employee e4 = new Employee(3,"Avdhoot");
+            
+            Employee[] arr = {e1,e2,e3,e4};
+            
+            Arrays.sort(arr);
+            
+            System.out.println(Arrays.toString(arr));
+	        }
+        }
+
+```
+## Comparator :
+```
+        - compare two given objects
+        - Functional Interface
+        - it has only one abstract Method named " public int compare(T obj1, T obj2) " for sorting objects
+```            
+        Ways to Use Comparator :
+```
+        1) Making a Comparator Class implementing Comparator<T> and then creating object of that comparator class and passing
+        that object as second parameter to Arrays.sort() or Collections.sort() or any methods that takes comparator as
+        argument. 
+```
+```java
+
+                class IdComparator implements Comparator<Employee>
+                {
+                @Override
+                public int compare(Employee emp1,Employee emp2){
+                        return emp1.getId()-emp2.getId() ;
+                }      
+                }
+
+                public class Main
+                {
+                        public static void main(String[] args) {
+                        
+                                Employee[] arr = {e1,e2,e3,e4};
+                                
+                                IdComparator comp = new IdComparator();
+                                
+                                Arrays.sort(arr,comp);
+                                
+                                System.out.println(Arrays.toString(arr));
+                        
+                        }
+                }
+
+```
+```
+        2) By Passing anonymous object of Comparator Class as a parameter
+```
+```java
+		 Arrays.sort(arr,new IdComparator()); //Anonymous Object
+```
+```
+        3) By assigning Lambda to Comparator reference and then passing comparator object as a parameter
+```
+```java
+        Comparator<Employee> comp = (emp1, emp2)-> emp1.getName().compareTo(emp2.getName());
+        Arrays.sort(arr,comp);
+```
+```
+        4) By using anonymous object of anonymous class
+```
+```java
+                Arrays.sort(arr,new Comparator<Employee>(){
+		     public int compare(Employee emp1,Employee emp2)
+		     {
+		         return emp1.getId() - emp2.getId();
+		     }
+		 });
+```
+We can make above code concise with the help of lambda
+```java
+        Arrays.sort(arr,(e1,e2) -> e1.getId - e2.getId); 
+        // Java Compiler will able to know that e1 and e2 are of Employee cause, you made arr of Employee[] type.
+        // In Lambda Expressions, the compiler performs type inference based on context in which it is used, It is one of the
+        // advantages of Lambda.
+```
+## JDBC :
+>> Java Database Connectivity
+>> is a java API to connect and execute the query with the database.
+>> part of the Java SE - Standard Edition
+>> it uses JDBC drivers to connect with the database.
+>> java.sql package contains classes and interfaces for JDBC API
+>> *some popular interfaces*  : Driver, Connection, Statement, PreparedStatement, CallableStatement, ResultSet
+>> *some popular classes* : DriverManager
+
+## JDBC Drivers :
+>> is a software component that enables java application to interact with the database
+>> There are four types of JDBC drivers : 1) JDBC-ODBC Bridge Driver (Type 1 Driver)
+                                          2) Native Driver (Type 2 Driver)
+                                          3) Network Protocol Driver (Type 3 Driver)
+                                          4) Thin Driver (Type 4 Driver)
+1) JDBC-ODBC Bridge Driver  >  uses ODBC driver to connect to the database
+                            >  converts JDBC method calls into the ODBC function calls
+                            >  In Java 8,  it has been removed
+2) Native Driver >  uses a database-specific API provided by the database vendor
+                 >  partially platform-dependent because they rely on a native library to interact with the database.
+3) Network Protocol Driver >  uses a database-independent, network-based protocol to connect to the database server.
+                           >  entirely Java-based 
+                           >  converts JDBC calls into a protocol that is understood by a middleware server, which then     communicates with the database server
+4) Thin Driver >  are fully Java-based and connect directly to the database server using a database-specific protocol
+               >  no external dependencies
+               >  are often considered the most efficient and suitable for production use because they eliminate the need for middleware layers.
+
+*Statement Interface Methods :* 
+public ResultSet executeQuery(String sql): is used to execute SELECT query. It returns the object of ResultSet.
+public int executeUpdate(String sql): is used to execute specified query, it may be create, drop, insert, update, delete etc.
+
+
+## HTTP Methods :
+
+*GET vs POST* : 
+>> GET is primarily used for requesting data from a specified resource on the server. It is a safe method meaning it should not have any side effects on the server or data. GET requests typically append data to the URL as query parameters. Data is visible in the URL, which makes it less secure and suitable for small amounts of non-sensitive data.
+>> POST is used to submit data to the server to be processed, often for creating new resources. Unlike GET, POST requests can have side effects on the server or data. POST requests send data in the request body, which is not visible in the URL. This allows for sending larger amounts of data, including sensitive information, in a more secure manner.
+
+*PUT vs PATCH* :
+>> PUT is used to update a resource or create it if it doesn't exist.
+When you send a PUT request, you typically send the entire representation of the resource in the request body. The server then replaces the existing resource with the new representation provided in the request. 
+>> PATCH is used to apply partial modifications to a resource. In a PATCH request, you send a representation of the resource with only the changes that need to be applied. The server then applies these changes to the existing resource, leaving the unchanged parts intact.
+
 
 ## What is Reflection
 >> Reflection in Java refers to the ability of a program to examine, introspect, and manipulate its own structure, classes, methods, fields, and objects at runtime. It provides a way to inspect and modify Java classes and objects dynamically, without knowing their names or details at compile time. Reflection is facilitated through the use of classes in the java.lang.reflect package.

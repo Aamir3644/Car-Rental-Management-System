@@ -1,4 +1,0 @@
-## VCS
->> 
-## What is Git ?
->> 

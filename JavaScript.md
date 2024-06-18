@@ -460,3 +460,56 @@ async function fetchData() {
 // Call the fetchData function
 fetchData();
 ```
+
+## Implicit Type Coercion in JS :
+>> String Coercion :
+```
+    String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type. and then concatination happens.
+```
+```js
+        var x = 3;
+        var y = "3";
+        x + y // Returns "33" 
+```
+
+```
+    Type coercion also takes place when using the ‘ - ‘ operator, but the difference while using ‘ - ‘ operator is that, a string is converted to a number and then subtraction takes place.
+```
+```js
+        var x = 3;
+        var y = "3";
+        x - y    //Returns 0 since the variable y (string type) is converted to a number type
+```
+
+>> Boolean Coercion :
+```
+    Truthy values are those which will be converted (coerced) to true. Falsy values are those which will be converted to false.
+    All values except false, 0, 0n, -0, “”, null, undefined, and NaN are truthy values.
+```
+```js
+        var x = 0;
+        var y = 23;
+        if(x) { console.log(x) }   // The code inside this block will not run since the value of x is 0(Falsy)
+        if(y) { console.log(y) }    // The code inside this block will run since the value of y is 23 (Truthy)
+```
+
+>> Logical Operators :
+```
+    Logical operators in javascript, unlike operators in other programming languages, do not return true or false. They always return one of the operands.
+    
+    OR ( | | ) operator - If the first value is truthy, then the first value is returned. Otherwise, always the second value gets returned.
+    
+    AND ( && ) operator - If both the values are truthy, always the second value is returned. If the first value is falsy then the first value is returned or if the second value is falsy then the second value is returned.
+
+```
+## Here's how the == operator works in JavaScript:
+
+- If the two operands have the same data type, JavaScript performs a strict equality comparison, which checks if they have the same value.
+
+- If the two operands have different data types, JavaScript will attempt to coerce one or both of them to a common data type before making the comparison.
+
+- If one operand is a primitive value (string, number, boolean), and the other is an object, JavaScript will attempt to convert the object to a primitive value using the valueOf() and toString() methods of the object.
+
+- If one operand is null and the other is undefined, they are considered equal.
+
+- If one operand is a number and the other is a string, JavaScript will try to convert the string to a number and then perform the comparison.

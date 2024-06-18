@@ -535,3 +535,162 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 - (3) CanDeactivate: Checks if a route can be deactivated.
 - (4) Resolve: Pre-fetches data before activating a route.
 - (5) CanLoad: Checks if a module can be loaded.
+
+## Pipes 
+>> Pipes are used to transform data before showing it into the view.
+>> Angular has different built-in pipes that we can use, like DatePipe, UpperCasePipe, LowerCasePipe, etc.
+>> We can also create Custom Pipes as per our needs.
+
+```ts
+        import { Pipe, PipeTransform } from '@angular/core';
+
+        @Pipe({
+        name: 'percentage'
+        })
+
+        export class PercentagePipe implements PipeTransform {
+
+        transform(value : number, totalMarks : number, decimal: number){
+        return (value / totalMarks * 100).toFixed(decimal); 
+        }
+        }
+```
+```ts
+        export class AppComponent {
+                marks :number = 720;
+                totalMarks :number = 690;
+                constructor(private studentService : StudentService){ }
+        }
+```
+```html
+        <!-- app.component.html -->
+        <h1>{{marks | percentage : totalMarks : 2}}</h1>
+        
+        <!-- using colen in above syntax is way of sending parameters to transform method -->
+```
+
+## Forms in Angular
+
+(1) Template Forms
+- Template-driven forms are easier to use and are suitable for simple forms. They rely heavily on Angular directives and use Angular's two-way data binding with `ngModel`
+- When we work with Template driven forms, we import FormsModule.
+
+(2) Reactive Forms
+- Reactive forms are forms where we define structure of the form in the component class. We create the form model with `FormControl`, `FormGroup`, and `FormArray` classes provided by Angular.
+- When we work with Reactive Forms, we import ReactiveFormsModule.
+
+**`FormControl`**
+- It tracks the state of single form control
+
+**`FormGroup`**
+- It tracks the state of a group of form controls.
+
+- There are two ways to manage Reactive Forms
+- (1) Using `FormGroup`
+
+```ts
+        // app.component.ts
+
+        export class AppComponent {
+  
+           reactiveForm! : FormGroup;
+        
+           ngOnInit(){
+                this.reactiveForm = new FormGroup({
+                name : new FormControl(null),
+                email : new FormControl(null),
+                age : new FormControl(null),
+                gender : new FormControl('Male'),
+                hobbies : new FormControl(null)
+                });
+           } 
+
+           onSubmit(){
+               console.log(this.reactiveForm);
+           }
+        }
+```
+```html
+        <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+           <div>
+            <label>Name:</label>
+            <input id="name" type="text" formControlName="name"/>
+           </div>
+
+           <button type="submit" class="btn">Submit</button>
+        </form>
+```
+
+- (2) Using FormBuilder
+> FormBuilder is an Angular service that provides a more concise and simplified way of creating instances of `FormGroup` & `FormControl`
+
+```ts
+        export class AppComponent {
+  
+           myForm! : FormGroup;
+
+           constructor(private fb : FormBuilder){}
+
+           ngOnInit(){
+              this.myForm = this.fb.group({
+              name : [''],
+              email : [''],
+              age : [''],
+              gender : [''],
+              hobbies : ['']
+              })
+            }
+
+           onSubmit(){
+              console.log(this.myForm.value);
+           }
+        }
+```
+
+- We can group form controls in two ways :
+
+(1) `FormGroup`
+- When we use `FormGroup`, control becomes property of the `FormGroup` object. Each control is represented by key-value pair.
+- When we create a `FormGroup`, we pass object to it.
+```ts
+        ngOnInit(){
+           this.myForm = this.fb.group({
+              personalDetails : this.fb.group({
+              name : ['', Validators.required],
+              email : ['', Validators.required],
+              age : ['', Validators.required]
+              }),
+              gender : [''],
+           })
+        }
+```
+- When we do nesting of controls into the FormGroup, we have to put all this control templates into a parent div and have to give "formGroupName" attribute as follows.
+```html
+        <div formGroupName="personalDetails">
+           <div>
+                <label for="name">Name:</label>
+                <input id="name" type="text" formControlName="name"/>
+           </div>
+
+           <div>
+                <label for="email">Email:</label>
+                <input id="email" type="email" formControlName="email"/>
+           </div>
+
+           <div>
+                <label for="age">Age:</label>
+                <input id="age" type="number" formControlName="age"/>
+           </div>
+        </div>
+```
+
+(2) `FormArray`
+- In `FormArray`, the form control becomes part of the array.
+- When we create a `FormArray, we pass an array.
+```ts
+        hobbies : this.fb.array([ 
+        this.fb.control(''),
+        this.fb.control('')
+        ])
+```
+
