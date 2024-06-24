@@ -38,6 +38,8 @@
 - EF Core is an object-relational mapper (ORM) that enables .NET developers to work with a database using .NET objects, eliminating much of the data-access code they would usually need to write.
 
 ## Entity Framework Core Migrations
+- Migrations in EF Core provide a way to incrementally update the database schema to keep it in sync with the application's data model while preserving existing data in the database.
+
 >> Add-Migration Initial
 >> Update-Database
 
