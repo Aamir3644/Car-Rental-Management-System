@@ -124,10 +124,10 @@
 >> A method which is declared as abstract and have no implementation is called as Abstract Method. If a class contains abstract method, that class must be abstract or else it will give compilation error.
 
 ## What is Interface ?
->> An interface is a blueprint for a class that defines a set of abstract methods. Any class implementing the interface must provide concrete implementations for those methods.
->> It is used to achieve abstraction.
->> Interface can only have abstract methods. But from Java 8, interface can have static and default methods with implementation. Its methods are by default public and abstract.
->> Interfaces specify what a class must do and not how.
+>> An interface is a blueprint for a class that defines a set of abstract methods. Any class implementing the interface must provide concrete implementations for those methods. 
+>> It is used to achieve abstraction. 
+>> Interface can only have abstract methods. But from Java 8, interface can have static and default methods with implementation. Its methods are by default public and abstract. 
+>> Interfaces specify what a class must do and not how. 
 
 ## What is default methods ?
 >> From Java 8 onwards, interface can have default methods which has its own implementation. A class implementing that interface can override default method and provide its own implementation.

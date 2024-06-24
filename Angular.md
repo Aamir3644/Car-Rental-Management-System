@@ -105,7 +105,7 @@
 
 (4) Two-way Binding : 
 - Two-way data binding combines property binding and event binding, typically used with forms. It uses the [(ngModel)] syntax.
-- For two-way data binding to work, you need to import FormsModule in your module.
+- For two-way data binding to work, you need to import FormsModule in your module file.
 - It uses the ngModel directive to enable this synchronization.
 
 ```ts
@@ -139,7 +139,7 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
 
 ### ngIf 
 >> It is basically used in Conditional Rendering Tasks.
->> ngIf can be used with with * (Asterisk) or without * (Asterisk). Both of the examples are below.
+>> ngIf can be used with * (Asterisk) or without * (Asterisk). Both of the examples are below.
 
 - With *
 ```html
@@ -693,4 +693,3 @@ Examples include *ngIf, *ngFor, and *ngSwitch.
         this.fb.control('')
         ])
 ```
-
